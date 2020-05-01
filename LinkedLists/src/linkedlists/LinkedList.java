@@ -3,6 +3,7 @@ package linkedlists;
 public class LinkedList<E> {
 	private Node<E> head;
 	private Node<E> cursor;
+	private int length;
 
 	/* Inserts */
 	public void insertAtStart(E data) {
@@ -10,10 +11,12 @@ public class LinkedList<E> {
 		if (head == null) {
 			head = newNode;
 			cursor = head;
+			length++;
 		} else {
 			newNode.nextNode = head;
 			head.prevNode = newNode;
 			head = newNode;
+			length++;
 		}
 	}
 
@@ -22,10 +25,12 @@ public class LinkedList<E> {
 		if (head == null) {
 			head = newNode;
 			cursor = head;
+			length++;
 		} else {
 			Node<E> last = this.findLast();
 			last.nextNode = newNode;
 			newNode.prevNode = last;
+			length++;
 		}
 	}
 
@@ -36,18 +41,21 @@ public class LinkedList<E> {
 			newNode.nextNode = position_node.nextNode;
 			position_node.nextNode = newNode;
 		}
+		length++;
 	}
 
 	/* Delete */
 	public Node<E> deleteAtStart() {
 		Node<E> toDel = this.head;
 		this.head = this.head.nextNode;
+		length--;
 		return toDel;
 	}
 
 	public Node<E> deleteAtEnd() {
 		Node<E> toDel = this.findLast();
 		this.findSecondLast().nextNode = head;
+		length--;
 		return toDel;
 	}
 
@@ -55,6 +63,7 @@ public class LinkedList<E> {
 		Node<E> position_node = this.findAtPosition(position);
 		Node<E> prev_node = this.findAtPosition(position - 1);
 		prev_node.nextNode = position_node.nextNode;
+		length--;
 		return position_node;
 	}
 
@@ -109,19 +118,6 @@ public class LinkedList<E> {
 		while ((second_last.nextNode.nextNode) != cursor)
 			second_last = second_last.nextNode;
 		return second_last;
-	}
-
-	/* Length of the linked List */
-	public int length() {
-		if (head == null)
-			return 0;
-		int length = 0;
-		Node<E> curr = this.head;
-		while (curr != head) {
-			length += 1;
-			curr = curr.nextNode;
-		}
-		return length;
 	}
 
 	/* Display - two ways */
