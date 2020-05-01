@@ -120,6 +120,10 @@ public class LinkedList<E> {
 		return second_last;
 	}
 
+	public int length() {
+		return length;
+	}
+
 	/* Display - two ways */
 	public void displayList() {
 		Node<E> curr = this.head;
