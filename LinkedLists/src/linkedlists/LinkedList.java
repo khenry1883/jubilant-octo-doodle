@@ -2,19 +2,19 @@ package linkedlists;
 
 public class LinkedList<E> {
 	private Node<E> head;
-	private Node<E> start;
+	private Node<E> curr;
 
 	/* Inserts */
 	public void insertFirstNode(E data) {
 		Node<E> newNode = new Node<E>(data);
-		start.head = newNode;
+		head = newNode;
 	}
 
 	public void insertAtStart(E data) {
 		Node<E> newNode = new Node<E>(data);
-		newNode.nextNode = start.head;
-		start.head.prevNode = newNode;
-		start.head = newNode;
+		newNode.nextNode = head;
+		head.prevNode = newNode;
+		head = newNode;
 	}
 
 	public void insertAtEnd(E data) {
@@ -27,7 +27,7 @@ public class LinkedList<E> {
 	public void insertAtPosition(E data, int position) {
 		Node<E> newNode = new Node<E>(data);
 		Node<E> position_node = this.findAtPosition(position - 1);
-		if (position_node != start.head) {
+		if (position_node != head) {
 			newNode.nextNode = position_node.nextNode;
 			position_node.nextNode = newNode;
 		}
@@ -42,7 +42,7 @@ public class LinkedList<E> {
 
 	public Node<E> deleteAtEnd() {
 		Node<E> toDel = this.findLast();
-		this.findSecondLast().nextNode = start.head;
+		this.findSecondLast().nextNode = head;
 		return toDel;
 	}
 
@@ -86,7 +86,7 @@ public class LinkedList<E> {
 
 	public Node<E> findFirst() {
 		Node<E> first_reference = this.head;
-		while (first_reference.nextNode != start.head) {
+		while (first_reference.nextNode != head) {
 			first_reference = first_reference.nextNode;
 		}
 		return first_reference;
@@ -94,14 +94,14 @@ public class LinkedList<E> {
 
 	public Node<E> findLast() {
 		Node<E> last_reference = this.head;
-		while (last_reference.nextNode != start.head)
+		while (last_reference.nextNode != head)
 			last_reference = last_reference.nextNode;
 		return last_reference;
 	}
 
 	public Node<E> findSecondLast() {
 		Node<E> second_last = this.head;
-		while ((second_last.nextNode.nextNode) != start.head)
+		while ((second_last.nextNode.nextNode) != head)
 			second_last = second_last.nextNode;
 		return second_last;
 	}
