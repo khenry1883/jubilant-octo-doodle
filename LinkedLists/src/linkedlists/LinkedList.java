@@ -75,7 +75,7 @@ public class LinkedList<E> {
 
 	/* Finding references */
 	public Node<E> predWithData(E data) {
-		Node<E> curr = this.head;
+		Node<E> curr = this.cursor;
 		while (curr.nextNode != null) {
 			if (curr.nextNode.data == data)
 				return curr;
@@ -86,7 +86,7 @@ public class LinkedList<E> {
 
 	public Node<E> findFirst() {
 		Node<E> first_reference = this.cursor;
-		while (first_reference.nextNode != head) {
+		while (first_reference.nextNode != cursor) {
 			first_reference = first_reference.nextNode;
 		}
 		return first_reference;
@@ -94,14 +94,14 @@ public class LinkedList<E> {
 
 	public Node<E> findLast() {
 		Node<E> last_reference = this.cursor;
-		while (last_reference.nextNode != head)
+		while (last_reference.nextNode != cursor)
 			last_reference = last_reference.nextNode;
 		return last_reference;
 	}
 
 	public Node<E> findSecondLast() {
 		Node<E> second_last = this.cursor;
-		while ((second_last.nextNode.nextNode) != head)
+		while ((second_last.nextNode.nextNode) != cursor)
 			second_last = second_last.nextNode;
 		return second_last;
 	}
