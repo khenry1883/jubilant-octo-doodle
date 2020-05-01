@@ -6,7 +6,7 @@ public class LinkedListDemo {
 
 		LinkedList<Integer> list = new LinkedList<Integer>();
 
-		System.out.println("Inserting Elements at Head");
+		System.out.println("Inserting Elements at Start");
 		list.insertAtStart(10);
 		list.insertAtStart(20);
 		list.insertAtStart(30);

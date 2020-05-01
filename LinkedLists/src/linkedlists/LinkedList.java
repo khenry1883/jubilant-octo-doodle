@@ -7,14 +7,14 @@ public class LinkedList<E> {
 	/* Inserts */
 	public void insertFirstNode(E data) {
 		Node<E> newNode = new Node<E>(data);
-		this.start.head = newNode;
+		start.head = newNode;
 	}
 
 	public void insertAtStart(E data) {
 		Node<E> newNode = new Node<E>(data);
-		newNode.nextNode = this.start.head;
-		this.start.head.prevNode = newNode;
-		this.start.head = newNode;
+		newNode.nextNode = start.head;
+		start.head.prevNode = newNode;
+		start.head = newNode;
 	}
 
 	public void insertAtEnd(E data) {
