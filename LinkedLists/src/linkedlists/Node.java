@@ -2,14 +2,16 @@ package linkedlists;
 
 public class Node<E> {
 
-	public Node prevNode;
-	public int data;
-	public Node nextNode;
+	public Node<E> prevNode;
+	public E data;
+	public Node<E> nextNode;
+	public Node<E> head;
 
-	public Node(int i) {
+	public Node(E i) {
 		data = i;
 		prevNode = null;
 		nextNode = null;
+		head = null;
 	}
 
 }
