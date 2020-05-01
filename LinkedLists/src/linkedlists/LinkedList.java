@@ -5,16 +5,15 @@ public class LinkedList<E> {
 	private Node<E> cursor;
 
 	/* Inserts */
-	public void insertFirstNode(E data) {
-		Node<E> newNode = new Node<E>(data);
-		head = newNode;
-	}
-
 	public void insertAtStart(E data) {
 		Node<E> newNode = new Node<E>(data);
-		newNode.nextNode = head;
-		head.prevNode = newNode;
-		head = newNode;
+		if (head == null) {
+			head = newNode;
+		} else {
+			newNode.nextNode = head;
+			head.prevNode = newNode;
+			head = newNode;
+		}
 	}
 
 	public void insertAtEnd(E data) {
