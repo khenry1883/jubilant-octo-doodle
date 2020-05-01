@@ -2,7 +2,7 @@ package linkedlists;
 
 public class LinkedList<E> {
 	private Node<E> head;
-	private Node<E> curr;
+	private Node<E> cursor;
 
 	/* Inserts */
 	public void insertFirstNode(E data) {
@@ -55,7 +55,7 @@ public class LinkedList<E> {
 
 	/* Search */
 	public Node<E> findWithData(E data) {
-		Node<E> curr = this.head;
+		Node<E> curr = this.cursor;
 		while (curr != null) {
 			if (curr.data == data) {
 				return curr;
@@ -66,7 +66,7 @@ public class LinkedList<E> {
 	}
 
 	public Node<E> findAtPosition(int position) {
-		Node<E> curr = this.head;
+		Node<E> curr = this.cursor;
 		for (int i = 1; i < position && curr != null; i++) {
 			curr = curr.nextNode;
 		}
@@ -85,7 +85,7 @@ public class LinkedList<E> {
 	}
 
 	public Node<E> findFirst() {
-		Node<E> first_reference = this.head;
+		Node<E> first_reference = this.cursor;
 		while (first_reference.nextNode != head) {
 			first_reference = first_reference.nextNode;
 		}
@@ -93,14 +93,14 @@ public class LinkedList<E> {
 	}
 
 	public Node<E> findLast() {
-		Node<E> last_reference = this.head;
+		Node<E> last_reference = this.cursor;
 		while (last_reference.nextNode != head)
 			last_reference = last_reference.nextNode;
 		return last_reference;
 	}
 
 	public Node<E> findSecondLast() {
-		Node<E> second_last = this.head;
+		Node<E> second_last = this.cursor;
 		while ((second_last.nextNode.nextNode) != head)
 			second_last = second_last.nextNode;
 		return second_last;
