@@ -4,34 +4,34 @@ public class LinkedListDemo {
 
 	public static void main(String[] args) {
 
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		LinkedList<DataClass> list = new LinkedList<DataClass>();
 
 		System.out.println("Inserting Elements at Start");
-		list.insertAtStart(10);
-		list.insertAtStart(20);
-		list.insertAtStart(30);
-		list.insertAtStart(40);
-		list.insertAtStart(50);
-		list.insertAtStart(60);
+		list.insertAtStart(new DataClass("Billy", 10));
+		list.insertAtStart(new DataClass("Sarah", 20));
+		list.insertAtStart(new DataClass("Tom", 30));
+		list.insertAtStart(new DataClass("Bob", 40));
+		list.insertAtStart(new DataClass("Tara", 50));
+		list.insertAtStart(new DataClass("Mary", 60));
 		System.out.println("Length:" + list.length());
 		System.out.println(list);
 
 		System.out.println("Inserting Elements at End");
-		list.insertAtEnd(70);
-		list.insertAtEnd(80);
+		list.insertAtEnd(new DataClass("Paula", 70));
+		list.insertAtEnd(new DataClass("Marco", 80));
 		System.out.println("Length:" + list.length());
 		System.out.println(list);
 
 		System.out.println("Inserting Elements at Position");
-		list.insertAtPosition(35, 4);
+		list.insertAtPosition(new DataClass("Baker", 35), 4);
 		System.out.println("Length:" + list.length());
 		System.out.println(list);
-		list.insertAtPosition(45, 6);
+		list.insertAtPosition(new DataClass("Lolly", 45), 6);
 		System.out.println("Length:" + list.length());
 		System.out.println(list);
 
 		System.out.println("Deleting Elements at Head");
-		Node<Integer> del = list.deleteAtStart();
+		Node<DataClass> del = list.deleteAtStart();
 		System.out.println("Node Deleted:" + del.data);
 		System.out.println("Length:" + list.length());
 		System.out.println(list);

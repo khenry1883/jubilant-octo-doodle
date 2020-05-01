@@ -11,6 +11,8 @@ public class LinkedList<E> {
 		if (head == null) {
 			head = newNode;
 			cursor = head;
+			newNode.nextNode = head;
+			head.prevNode = newNode;
 			length++;
 		} else {
 			newNode.nextNode = head;
@@ -23,8 +25,10 @@ public class LinkedList<E> {
 	public void insertAtEnd(E data) {
 		Node<E> newNode = new Node<E>(data);
 		if (head == null) {
-			head = newNode;
 			cursor = head;
+			head = newNode;
+			newNode.nextNode = head;
+			head.prevNode = newNode;
 			length++;
 		} else {
 			Node<E> last = this.findLast();
@@ -89,7 +93,7 @@ public class LinkedList<E> {
 
 	/* Finding references */
 	public Node<E> predWithData(E data) {
-		Node<E> curr = cursor;
+		Node<E> curr = head;
 		while (curr.nextNode != null) {
 			if (curr.nextNode.data == data)
 				return curr;
@@ -138,18 +142,18 @@ public class LinkedList<E> {
 	}
 
 	public String toString() {
-		Node<E> curr = this.head;
+		this.cursor = this.head;
 		StringBuilder str = new StringBuilder();
-		str.append("\n{");
+		str.append("\n");
 
-		while (curr != null) {
-			str.append("Data:" + curr.data + " ");
-			curr = curr.nextNode;
+		if (this.cursor != null) {
+			do {
+				str.append("Data:" + this.cursor.data + " ");
+				this.cursor = this.cursor.nextNode;
+			} while (this.cursor != this.head);
 		}
 		str.append("}");
-
 		return str.toString();
-
 	}
 
 }
