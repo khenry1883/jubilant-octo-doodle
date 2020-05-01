@@ -9,6 +9,7 @@ public class LinkedList<E> {
 		Node<E> newNode = new Node<E>(data);
 		if (head == null) {
 			head = newNode;
+			cursor = head;
 		} else {
 			newNode.nextNode = head;
 			head.prevNode = newNode;
@@ -18,9 +19,14 @@ public class LinkedList<E> {
 
 	public void insertAtEnd(E data) {
 		Node<E> newNode = new Node<E>(data);
-		Node<E> last = this.findLast();
-		last.nextNode = newNode;
-		newNode.prevNode = last;
+		if (head == null) {
+			head = newNode;
+			cursor = head;
+		} else {
+			Node<E> last = this.findLast();
+			last.nextNode = newNode;
+			newNode.prevNode = last;
+		}
 	}
 
 	public void insertAtPosition(E data, int position) {
