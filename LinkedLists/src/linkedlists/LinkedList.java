@@ -73,31 +73,31 @@ public class LinkedList<E> {
 
 	/* Search */
 	public Node<E> findWithData(E data) {
-		Node<E> curr = cursor;
-		while (curr != null) {
-			if (curr.data == data) {
-				return curr;
+		cursor = head;
+		while (cursor != null) {
+			if (cursor.data == data) {
+				return cursor;
 			}
-			curr = curr.nextNode;
+			cursor = cursor.nextNode;
 		}
 		return null;
 	}
 
 	public Node<E> findAtPosition(int position) {
-		Node<E> curr = cursor;
-		for (int i = 1; i < position && curr != null; i++) {
-			curr = curr.nextNode;
+		cursor = head;
+		for (int i = 1; i < position && cursor != null; i++) {
+			cursor = cursor.nextNode;
 		}
-		return curr;
+		return cursor;
 	}
 
 	/* Finding references */
 	public Node<E> predWithData(E data) {
-		Node<E> curr = head;
-		while (curr.nextNode != null) {
-			if (curr.nextNode.data == data)
-				return curr;
-			curr = curr.nextNode;
+		cursor = head;
+		while (cursor.nextNode != null) {
+			if (cursor.nextNode.data == data)
+				return cursor;
+			cursor = cursor.nextNode;
 		}
 		return null;
 	}
@@ -145,11 +145,14 @@ public class LinkedList<E> {
 		this.cursor = this.head;
 		StringBuilder str = new StringBuilder();
 		str.append("\n");
-
 		if (this.cursor != null) {
+			int i = 0;
 			do {
 				str.append("Data:" + this.cursor.data + " ");
 				this.cursor = this.cursor.nextNode;
+				if (++i > this.length) {
+					break;
+				}
 			} while (this.cursor != this.head);
 		}
 		str.append("}");
